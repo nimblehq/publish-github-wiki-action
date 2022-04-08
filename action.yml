@@ -9,7 +9,7 @@ branding:
 
 inputs:
   USER_TOKEN: 
-    description: 'The Github Personal Access Token for this action to use.'
+    description: 'The Github Personal Access Token for this action to use'
     required: true
   USER_NAME:
     description: 'The username of the user/bot of the provided USER_TOKEN'

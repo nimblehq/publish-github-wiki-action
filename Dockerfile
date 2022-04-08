@@ -1,6 +1,8 @@
-FROM alpine:3
+FROM alpine/git
 
-COPY entrypoint.sh /
+RUN apk add rsync
+
+COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]

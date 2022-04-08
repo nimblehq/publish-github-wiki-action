@@ -14,18 +14,18 @@ function add_mask() {
 }
 
 if [ -z "$USER_NAME" ]; then
-    error "USER_NAME environment variable is not set"
-    exit 1
+  error "USER_NAME environment variable is not set"
+  exit 1
 fi
 
 if [ -z "$USER_EMAIL" ]; then
-    error "USER_EMAIL environment variable is not set"
-    exit 1
+  error "USER_EMAIL environment variable is not set"
+  exit 1
 fi
 
 if [ -z "$USER_TOKEN" ]; then
-    error "USER_TOKEN environment variable is not set"
-    exit 1
+  error "USER_TOKEN environment variable is not set"
+  exit 1
 fi
 
 add_mask "${USER_TOKEN}"
@@ -51,8 +51,9 @@ add_mask "${USER_TOKEN}"
   rsync -av --delete $WIKI_FOLDER/ $TEMP_CLONE_WIKI_FOLDER/ --exclude .git
   cd $TEMP_CLONE_WIKI_FOLDER
   git add .
-  git commit -m $COMMIT_MSG
+  git commit -m "$COMMIT_MSG"
   git push -f --set-upstream https://$USER_TOKEN@github.com/$REPOSITORY.wiki.git master
+  cd ..
 } || exit 1
 
 rm -rf "$TEMP_CLONE_WIKI_FOLDER"
