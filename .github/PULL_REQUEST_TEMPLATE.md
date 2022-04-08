@@ -1,4 +1,4 @@
-Add the story URL here. Prefer the short link format, e.g. https://app.clubhouse.io/acme/story/1234/
+Closes #ISSUE_NUMBER
 
 ## What happened
 
