@@ -9,7 +9,7 @@
 
 ## Usage
 
-Add the following workflow as a step in your existing workflow or a new one, replacing `USER_NAME` and `USER_EMAIL` with your account/bot's information.
+Add the following workflow as a step in your existing workflow or a new one, replacing `USER_NAME` and `USER_EMAIL` with your account/bot information.
 
 ```yml
 - name: Publish Github Wiki
@@ -54,13 +54,13 @@ Below are steps to ensure proper setup:
 
 4. **Add the created Personal Access Token as a secret**
 
-   Navigate to "Secrets > Actions" under the projects "Settings" tab to add the secret.
+   Navigate to "Secrets > Actions" under the projects "Settings" tab to add a secret.
 
    ![Add new secret](https://user-images.githubusercontent.com/34730459/162669143-6fe258ad-b058-48a1-9c7b-dcbb1ecd0452.png)
 
 ## License
 
-This project is Copyright (c) 2014-2020 Nimble. It is free software,
+This project is Copyright (c) 2014 and onwards Nimble. It is free software
 and may be redistributed under the terms specified in the [LICENSE] file.
 
 [LICENSE]: /LICENSE
