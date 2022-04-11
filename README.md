@@ -21,18 +21,19 @@ Add the following workflow as a step in your existing workflow or a new one, rep
 ```
 
 <!-- TODO: Allow users to customize the wiki directory folder -->
-This workflow will synchronize the `./.github/wiki` folder with your project's Github Wiki.
+This workflow will synchronize the `.github/wiki` folder with your project's Github Wiki.
 
 ## Setup
 
 To use this workflow, your project must have the following:
 
 - The Github Wiki must be enabled and initialized.
-- A valid Personal Access Token be provided to the workflow.
+- A valid Personal Access Token must be provided to the workflow.
 
 Below are steps to ensure proper setup:
 
 1. **Enable the Wiki feature**
+
    You can enable the Wiki through your project's "Settings" tab.
 
    ![Wiki Feature in Settings](https://user-images.githubusercontent.com/34730459/162665798-a6464c67-c74a-427e-9221-4df8310fe9cb.png)
