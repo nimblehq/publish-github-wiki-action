@@ -32,25 +32,30 @@ To use this workflow, your project must have the following:
 
 Below are steps to ensure proper setup:
 
-**1. Enable the Wiki feature on your repository through the "Settings" tab.**
-![Wiki Feature in Settings](https://user-images.githubusercontent.com/34730459/162665798-a6464c67-c74a-427e-9221-4df8310fe9cb.png)
+1. **Enable the Wiki feature**
+   You can enable the Wiki through your project's "Settings" tab.
 
-**2. Create at least one Wiki Page in the "Wiki" tab**
-This is required to initalize the project's Wiki repository.
+   ![Wiki Feature in Settings](https://user-images.githubusercontent.com/34730459/162665798-a6464c67-c74a-427e-9221-4df8310fe9cb.png)
 
-![Create Wiki Page](https://user-images.githubusercontent.com/34730459/162666191-5f8cf77b-925f-4bec-b3b9-4ae4996444a9.png)
+2. **Create at least one Wiki Page in the "Wiki" tab**
 
-**3. Create a Personal Access Token with the `repo` scope enabled**
-Navigate to the [Personal Access Token](https://github.com/settings/tokens) page under the "Developer Settings" in your **user/bot account** "Settings" and generate the token.
+   This is required to initalize the project's Wiki repository.
 
-![Generate Token](https://user-images.githubusercontent.com/34730459/162668740-b0ef45da-0985-4953-80c7-c60c35f5aefa.png)
+   ![Create Wiki Page](https://user-images.githubusercontent.com/34730459/162666191-5f8cf77b-925f-4bec-b3b9-4ae4996444a9.png)
 
-**Ensure your token is copied/saved for the next step**
+3. **Create a Personal Access Token with the `repo` scope enabled**
 
-**4. Add the created Personal Access Token as a secret**
-Navigate to "Secrets > Actions" under the projects "Settings" tab to add the secret.
+   Navigate to the [Personal Access Token](https://github.com/settings/tokens) page under the "Developer Settings" in your **user/bot account** "Settings" and generate the token.
 
-![Add new secret](https://user-images.githubusercontent.com/34730459/162669143-6fe258ad-b058-48a1-9c7b-dcbb1ecd0452.png)
+   ![Generate Token](https://user-images.githubusercontent.com/34730459/162668740-b0ef45da-0985-4953-80c7-c60c35f5aefa.png)
+
+   Ensure your token is copied/saved for the next step.
+
+4. **Add the created Personal Access Token as a secret**
+
+   Navigate to "Secrets > Actions" under the projects "Settings" tab to add the secret.
+
+   ![Add new secret](https://user-images.githubusercontent.com/34730459/162669143-6fe258ad-b058-48a1-9c7b-dcbb1ecd0452.png)
 
 ## License
 
