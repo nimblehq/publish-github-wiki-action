@@ -6,7 +6,7 @@ TEMP_CLONE_WIKI_FOLDER="tmp_wiki"
 COMMIT_MSG="Update Wiki content"
 
 function error() {
-  echo "::error file=${BASH_SOURCE[0]},line=${BASH_LINENO[0]}::$1"
+  echo "::error::$1"
 }
 
 function add_mask() {
