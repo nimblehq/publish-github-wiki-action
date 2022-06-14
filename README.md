@@ -40,7 +40,7 @@ Below are steps to ensure proper setup:
 
 2. **Create at least one Wiki Page in the "Wiki" tab**
 
-   This is required to initalize the project's Wiki repository.
+   This is required to initialize the project's Wiki repository.
 
    ![Create Wiki Page](https://user-images.githubusercontent.com/34730459/162666191-5f8cf77b-925f-4bec-b3b9-4ae4996444a9.png)
 
@@ -67,7 +67,12 @@ and may be redistributed under the terms specified in the [LICENSE] file.
 
 ## About
 
-![Nimble](https://assets.nimblehq.co/logo/dark/logo-dark-text-160.png)
+<a href="https://nimblehq.co/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://assets.nimblehq.co/logo/dark/logo-dark-text-160.png">
+    <img alt="Nimble logo" src="https://assets.nimblehq.co/logo/light/logo-light-text-160.png">
+  </picture>
+</a>
 
 This project is maintained and funded by Nimble.
 
