@@ -14,7 +14,7 @@ Add the following workflow as a step in your existing workflow or a new one, rep
 ```yml
 - name: Publish Github Wiki
   uses: nimblehq/publish-github-wiki-action@v1.0
-  env:
+  with:
     USER_NAME: John Smith
     USER_EMAIL: john_smith@email.com
     USER_ACCESS_TOKEN: ${{ secrets.USER_ACCESS_TOKEN }}
