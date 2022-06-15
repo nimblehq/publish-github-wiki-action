@@ -34,6 +34,10 @@ fi
 
 add_mask "${USER_ACCESS_TOKEN}"
 
+# Add Safe Directory to initialize sub repo
+git config --global --add safe.directory "/github/workspace"
+git config --global --add safe.directory "/github/workspace/$TEMP_CLONE_FOLDER"
+
 # This step will
 # - Create folder named `tmp_wiki`
 # - Initialize Git
