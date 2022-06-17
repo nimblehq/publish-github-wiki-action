@@ -41,6 +41,11 @@ add_mask "${USER_ACCESS_TOKEN}"
 {
   mkdir $TEMP_CLONE_WIKI_FOLDER
   cd $TEMP_CLONE_WIKI_FOLDER || exit 1
+
+  # Add Safe Directory to initialize sub repo
+  git config --global --add safe.directory "/github/workspace"
+  git config --global --add safe.directory "/github/workspace/$TEMP_CLONE_WIKI_FOLDER"
+
   git init
   git config user.name $USER_NAME
   git config user.email $USER_EMAIL
