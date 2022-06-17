@@ -8,20 +8,20 @@ branding:
   color: orange
 
 inputs:
-  USER_ACCESS_TOKEN: 
+  user_access_token: 
     description: 'The Github Personal Access Token for this action to use'
     required: true
-  USER_NAME:
-    description: 'The username of the user/bot of the provided USER_ACCESS_TOKEN'
+  user_name:
+    description: 'The username of the user/bot of the provided user_access_token'
     required: true
-  USER_EMAIL:
-    description: 'The email of the user/bot of the prodived USER_ACCESS_TOKEN'
+  user_email:
+    description: 'The email of the user/bot of the prodived user_access_token'
     required: true
 
 runs:
   using: docker
   image: Dockerfile
   args:
-    - ${{ inputs.USER_ACCESS_TOKEN }}
-    - ${{ inputs.USER_NAME }}
-    - ${{ inputs.USER_EMAIL }}
+    - ${{ inputs.user_access_token }}
+    - ${{ inputs.user_name }}
+    - ${{ inputs.user_email }}

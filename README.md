@@ -1,5 +1,10 @@
 <p align="center">
-  <img alt="Nimble logo" src="https://assets.nimblehq.co/logo/light/logo-light-text-320.png" />
+  <a href="https://nimblehq.co/">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://assets.nimblehq.co/logo/dark/logo-dark-text-320.png">
+      <img alt="Nimble logo" src="https://assets.nimblehq.co/logo/light/logo-light-text-320.png">
+    </picture>
+  </a>
 </p>
 
 <h3 align="center">Publish Github Wiki Action</h3>
@@ -9,15 +14,15 @@
 
 ## Usage
 
-Add the following workflow as a step in your existing workflow or a new one, replacing `USER_NAME` and `USER_EMAIL` with your account/bot information.
+Add the following workflow as a step in your existing workflow or a new one, replacing `user_name` and `user_email` with your account/bot information.
 
 ```yml
 - name: Publish Github Wiki
   uses: nimblehq/publish-github-wiki-action@v1.0
   with:
-    USER_NAME: John Smith
-    USER_EMAIL: john_smith@email.com
-    USER_ACCESS_TOKEN: ${{ secrets.USER_ACCESS_TOKEN }}
+    user_name: John Smith
+    user_email: john_smith@email.com
+    user_access_token: ${{ secrets.USER_ACCESS_TOKEN }}
 ```
 
 <!-- TODO: Allow users to customize the wiki directory folder -->
