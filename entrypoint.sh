@@ -1,5 +1,9 @@
 #!/bin/sh
 
+USER_NAME=$INPUT_USER_NAME
+USER_EMAIL=$INPUT_USER_EMAIL
+USER_ACCESS_TOKEN=$INPUT_USER_ACCESS_TOKEN
+
 REPOSITORY=$GITHUB_REPOSITORY
 WIKI_FOLDER=".github/wiki"
 TEMP_CLONE_WIKI_FOLDER="tmp_wiki"
@@ -23,12 +27,12 @@ if [ -z "$USER_EMAIL" ]; then
   exit 1
 fi
 
-if [ -z "$USER_TOKEN" ]; then
-  error "USER_TOKEN environment variable is not set"
+if [ -z "$USER_ACCESS_TOKEN" ]; then
+  error "USER_ACCESS_TOKEN environment variable is not set"
   exit 1
 fi
 
-add_mask "${USER_TOKEN}"
+add_mask "${USER_ACCESS_TOKEN}"
 
 # This step will
 # - Create folder named `tmp_wiki`
@@ -40,7 +44,7 @@ add_mask "${USER_TOKEN}"
   git init
   git config user.name $USER_NAME
   git config user.email $USER_EMAIL
-  git pull https://$USER_TOKEN@github.com/$REPOSITORY.wiki.git
+  git pull https://$USER_ACCESS_TOKEN@github.com/$REPOSITORY.wiki.git
   cd ..
 } || exit 1
 
@@ -52,7 +56,7 @@ add_mask "${USER_TOKEN}"
   cd $TEMP_CLONE_WIKI_FOLDER
   git add .
   git commit -m "$COMMIT_MSG"
-  git push -f --set-upstream https://$USER_TOKEN@github.com/$REPOSITORY.wiki.git master
+  git push -f --set-upstream https://$USER_ACCESS_TOKEN@github.com/$REPOSITORY.wiki.git master
   cd ..
 } || exit 1
 
