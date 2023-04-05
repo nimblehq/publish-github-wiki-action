@@ -61,7 +61,7 @@ add_mask "${USER_ACCESS_TOKEN}"
   cd $TEMP_CLONE_WIKI_FOLDER
   git add .
   git commit -m "$COMMIT_MSG"
-  git push -f --set-upstream https://$USER_ACCESS_TOKEN@github.com/$REPOSITORY.wiki.git master
+  git push -f --set-upstream https://$USER_ACCESS_TOKEN@github.com/$REPOSITORY.wiki.git main
   cd ..
 } || exit 1
 
