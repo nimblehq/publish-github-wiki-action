@@ -1,8 +1,10 @@
 #!/bin/sh
 
-USER_NAME=$INPUT_USER_NAME
-USER_EMAIL=$INPUT_USER_EMAIL
-USER_ACCESS_TOKEN=$INPUT_USER_ACCESS_TOKEN
+set -eu
+
+USER_NAME=${INPUT_USER_NAME:-}
+USER_EMAIL=${INPUT_USER_EMAIL:-}
+USER_ACCESS_TOKEN=${INPUT_USER_ACCESS_TOKEN:-}
 
 REPOSITORY=$GITHUB_REPOSITORY
 WIKI_FOLDER=".github/wiki"
@@ -34,36 +36,30 @@ fi
 
 add_mask "${USER_ACCESS_TOKEN}"
 
-# This step will
-# - Create folder named `tmp_wiki`
-# - Initialize Git
-# - Pull old Wiki content
-{
-  mkdir $TEMP_CLONE_WIKI_FOLDER
-  cd $TEMP_CLONE_WIKI_FOLDER || exit 1
+WIKI_URL="https://${USER_ACCESS_TOKEN}@github.com/${REPOSITORY}.wiki.git"
 
-  # Add Safe Directory to initialize sub repo
-  git config --global --add safe.directory "/github/workspace"
-  git config --global --add safe.directory "/github/workspace/$TEMP_CLONE_WIKI_FOLDER"
+# Add Safe Directory to initialize sub repo
+git config --global --add safe.directory "/github/workspace"
+git config --global --add safe.directory "/github/workspace/$TEMP_CLONE_WIKI_FOLDER"
 
-  git init
-  git config user.name $USER_NAME
-  git config user.email $USER_EMAIL
-  git pull https://$USER_ACCESS_TOKEN@github.com/$REPOSITORY.wiki.git
-  cd ..
-} || exit 1
+if ! git clone "$WIKI_URL" "$TEMP_CLONE_WIKI_FOLDER"; then
+  error "Could not clone the wiki. Create its first page in the Wiki tab, then check that the token can push to this repository."
+  exit 1
+fi
 
-# This step will
-# - Synchronize differences between `.github/wiki/` & `tmp_wiki`
-# - Push new Wiki content
-{
-  rsync -av --delete $WIKI_FOLDER/ $TEMP_CLONE_WIKI_FOLDER/ --exclude .git
-  cd $TEMP_CLONE_WIKI_FOLDER
-  git add .
+rsync -av --delete --exclude .git "$WIKI_FOLDER/" "$TEMP_CLONE_WIKI_FOLDER/"
+
+cd "$TEMP_CLONE_WIKI_FOLDER"
+git config user.name "$USER_NAME"
+git config user.email "$USER_EMAIL"
+git add --all
+
+if git diff --cached --quiet; then
+  echo "The wiki is already up to date."
+else
   git commit -m "$COMMIT_MSG"
-  git push -f --set-upstream https://$USER_ACCESS_TOKEN@github.com/$REPOSITORY.wiki.git master
-  cd ..
-} || exit 1
+  git push origin HEAD
+fi
 
+cd ..
 rm -rf "$TEMP_CLONE_WIKI_FOLDER"
-exit 0
