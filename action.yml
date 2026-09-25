@@ -3,20 +3,23 @@ author: nimblehq
 
 description: Our Github Action publishes and updates your documentation to your project's Github Wiki!
 
-branding: 
+branding:
   icon: book
   color: orange
 
 inputs:
-  user_access_token: 
-    description: 'The Github Personal Access Token for this action to use'
-    required: true
+  user_access_token:
+    description: 'The token that pushes to the Wiki. Defaults to the workflow GITHUB_TOKEN, which needs the `contents: write` permission'
+    required: false
+    default: ${{ github.token }}
   user_name:
-    description: 'The username of the user/bot of the provided user_access_token'
-    required: true
+    description: 'The name on the Wiki commits'
+    required: false
+    default: 'github-actions[bot]'
   user_email:
-    description: 'The email of the user/bot of the prodived user_access_token'
-    required: true
+    description: 'The email on the Wiki commits'
+    required: false
+    default: '41898282+github-actions[bot]@users.noreply.github.com'
 
 runs:
   using: docker

@@ -36,7 +36,8 @@ fi
 
 add_mask "${USER_ACCESS_TOKEN}"
 
-WIKI_URL="https://${USER_ACCESS_TOKEN}@github.com/${REPOSITORY}.wiki.git"
+# GITHUB_TOKEN authenticates only as the x-access-token user. A personal token accepts any user name.
+WIKI_URL="https://x-access-token:${USER_ACCESS_TOKEN}@github.com/${REPOSITORY}.wiki.git"
 
 # Add Safe Directory to initialize sub repo
 git config --global --add safe.directory "/github/workspace"

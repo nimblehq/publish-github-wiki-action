@@ -14,16 +14,41 @@
 
 ## Usage
 
-Add the following workflow as a step in your existing workflow or a new one, replacing `user_name` and `user_email` with your account/bot information.
+Add the following job to an existing workflow or a new one. The job needs the `contents: write` permission, so the workflow's `GITHUB_TOKEN` can push to the Wiki.
+
+```yml
+jobs:
+  publish_wiki:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Publish Github Wiki
+        uses: nimblehq/publish-github-wiki-action@v1.1
+```
+
+All inputs are optional:
+
+| Input | Default | Purpose |
+|---|---|---|
+| `user_access_token` | The workflow `GITHUB_TOKEN` | The token that pushes to the Wiki |
+| `user_name` | `github-actions[bot]` | The name on the Wiki commits |
+| `user_email` | `41898282+github-actions[bot]@users.noreply.github.com` | The email on the Wiki commits |
+
+To publish as your own user or bot, pass a Personal Access Token and its account details:
 
 ```yml
 - name: Publish Github Wiki
-  uses: nimblehq/publish-github-wiki-action@v1.0
+  uses: nimblehq/publish-github-wiki-action@v1.1
   with:
     user_name: John Smith
     user_email: john_smith@email.com
     user_access_token: ${{ secrets.USER_ACCESS_TOKEN }}
 ```
+
+The action fails when it cannot clone or push to the Wiki. When `.github/wiki` matches the Wiki already, it makes no commit.
 
 <!-- TODO: Allow users to customize the wiki directory folder -->
 This workflow will synchronize the `.github/wiki` folder with your project's Github Wiki.
@@ -33,7 +58,7 @@ This workflow will synchronize the `.github/wiki` folder with your project's Git
 To use this workflow, your project must have the following:
 
 - The Github Wiki must be enabled and initialized.
-- A valid Personal Access Token must be provided to the workflow.
+- The job must have the `contents: write` permission, or a valid Personal Access Token must be provided to the workflow.
 
 Below are steps to ensure proper setup:
 
@@ -49,7 +74,9 @@ Below are steps to ensure proper setup:
 
    ![Create Wiki Page](https://user-images.githubusercontent.com/34730459/162666191-5f8cf77b-925f-4bec-b3b9-4ae4996444a9.png)
 
-3. **Create a Personal Access Token with the `repo` scope enabled**
+3. **Optional: create a Personal Access Token with the `repo` scope enabled**
+
+   Skip this step and the next one when the job uses the default `GITHUB_TOKEN`.
 
    Navigate to the [Personal Access Token](https://github.com/settings/tokens) page under the "Developer Settings" in your **user/bot account** "Settings" and generate the token.
 
