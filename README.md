@@ -76,7 +76,7 @@ Below are steps to ensure proper setup:
 
 3. **Optional: create a classic Personal Access Token with the `repo` scope enabled**
 
-   Skip this step and the next one when the job uses the default `GITHUB_TOKEN`. Use the default token or a classic token. Do not use a fine-grained token: a fine-grained token with write access has not been able to push to a Wiki (see [#16](https://github.com/nimblehq/publish-github-wiki-action/issues/16)).
+   Skip this step and the next one when the job uses the default `GITHUB_TOKEN`. Use the default token or a classic token. Do not use a fine-grained token. Issue [#16](https://github.com/nimblehq/publish-github-wiki-action/issues/16) reports that one with write access cannot push to a Wiki.
 
    Navigate to the [Personal Access Token](https://github.com/settings/tokens) page under the "Developer Settings" in your **user/bot account** "Settings" and generate the token.
 
