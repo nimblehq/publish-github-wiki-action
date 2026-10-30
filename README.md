@@ -58,7 +58,7 @@ This workflow will synchronize the `.github/wiki` folder with your project's Git
 To use this workflow, your project must have the following:
 
 - The Github Wiki must be enabled and initialized.
-- The job must have the `contents: write` permission, or a valid Personal Access Token must be provided to the workflow.
+- The job must have the `contents: write` permission, or a classic Personal Access Token with the `repo` scope must be provided to the workflow.
 
 Below are steps to ensure proper setup:
 
@@ -74,9 +74,9 @@ Below are steps to ensure proper setup:
 
    ![Create Wiki Page](https://user-images.githubusercontent.com/34730459/162666191-5f8cf77b-925f-4bec-b3b9-4ae4996444a9.png)
 
-3. **Optional: create a Personal Access Token with the `repo` scope enabled**
+3. **Optional: create a classic Personal Access Token with the `repo` scope enabled**
 
-   Skip this step and the next one when the job uses the default `GITHUB_TOKEN`.
+   Skip this step and the next one when the job uses the default `GITHUB_TOKEN`. Use the default token or a classic token. Do not use a fine-grained token: a fine-grained token with write access has not been able to push to a Wiki (see [#16](https://github.com/nimblehq/publish-github-wiki-action/issues/16)).
 
    Navigate to the [Personal Access Token](https://github.com/settings/tokens) page under the "Developer Settings" in your **user/bot account** "Settings" and generate the token.
 
